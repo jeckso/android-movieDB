@@ -1,6 +1,8 @@
 apply plugin: 'com.android.application'
 apply plugin: 'kotlin-android'
 apply plugin: 'kotlin-android-extensions'
+apply plugin: 'kotlin-kapt'
+apply plugin: 'kotlin-android-extensions'
 
 android {
     compileSdkVersion 29
@@ -12,23 +14,87 @@ android {
         targetSdkVersion 29
         versionCode 1
         versionName "1.0"
-
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
+        buildConfigField "String", "API_DOMAIN", "\"https://movie-db-dev.herokuapp.com\""
+        javaCompileOptions {
+            annotationProcessorOptions {
+                arguments = [
+                        disableEmptyStrategyCheck: 'false',
+                        enableEmptyStrategyHelper: 'true',
+                        defaultMoxyStrategy      : 'moxy.viewstate.strategy.OneExecutionStateStrategy'
+                ]
+            }
+        }
     }
-
     buildTypes {
         release {
             minifyEnabled false
             proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
         }
     }
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_1_8
+        targetCompatibility JavaVersion.VERSION_1_8
+    }
+    kotlinOptions {
+        jvmTarget = "1.8"
+        freeCompilerArgs += [
+                "-Xuse-experimental=kotlinx.coroutines.ExperimentalCoroutinesApi",
+                "-Xuse-experimental=kotlinx.coroutines.ObsoleteCoroutinesApi",
+                "-Xuse-experimental=kotlinx.coroutines.FlowPreview"]
+    }
 }
 
 dependencies {
-    implementation fileTree(dir: "libs", include: ["*.jar"])
-    implementation "org.jetbrains.kotlin:kotlin-stdlib:$kotlin_version"
-    implementation 'androidx.core:core-ktx:1.1.0'
-    implementation 'androidx.appcompat:appcompat:1.1.0'
+    implementation fileTree(dir: 'libs', include: ['*.jar'])
+    implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk7:$kotlin_version"
+
+    implementation "androidx.appcompat:appcompat:$version_app_compat"
+    implementation "androidx.core:core-ktx:$version_ktx_core"
+    implementation "androidx.constraintlayout:constraintlayout:$version_constraint_layout"
+    implementation "com.google.android.material:material:$version_material"
+    implementation "com.afollestad.material-dialogs:core:$version_dialogs"
+    implementation 'androidx.swiperefreshlayout:swiperefreshlayout:1.0.0'
+
+    /*Logs*/
+    implementation "com.jakewharton.timber:timber:$version_timber"
+
+    /*Tests*/
+    testImplementation "junit:junit:$version_junit"
+    androidTestImplementation "androidx.test:runner:$version_runner"
+    androidTestImplementation "androidx.test.espresso:espresso-core:$version_espresso"
+
+    /*Moxy*/
+    implementation "com.github.moxy-community:moxy:$version_moxy"
+    implementation "com.github.moxy-community:moxy-androidx:$version_moxy"
+    implementation "com.github.moxy-community:moxy-ktx:$version_moxy"
+    kapt "com.github.moxy-community:moxy-compiler:$version_moxy"
+
+    /*Dagger*/
+    implementation "com.google.dagger:dagger:$version_dagger"
+    implementation "com.google.dagger:dagger-android:$version_dagger"
+    implementation "com.google.dagger:dagger-android-support:$version_dagger"
+    kapt "com.google.dagger:dagger-compiler:$version_dagger"
+    kapt "com.google.dagger:dagger-android-processor:$version_dagger"
+    kapt "com.google.dagger:dagger-android-support:$version_dagger"
+
+    /*Coroutines*/
+    implementation "org.jetbrains.kotlinx:kotlinx-coroutines-core:$version_coroutines"
+    implementation "org.jetbrains.kotlinx:kotlinx-coroutines-android:$version_coroutines"
+
+    /* Text drawable */
+    implementation "com.amulyakhare:com.amulyakhare.textdrawable:$version_text_drawable"
+
+    // REST
+    implementation "com.squareup.retrofit2:retrofit:$version_retrofit"
+    implementation "com.squareup.retrofit2:converter-gson:$version_retrofit"
+    implementation("com.google.code.gson:gson:$version_gson")
+    implementation "com.jakewharton.retrofit:retrofit2-kotlin-coroutines-adapter:$version_retrofit_coroutine"
+    implementation("com.squareup.okhttp3:logging-interceptor:$version_logging_interceptor")
+
+    /* Secure Preferences */
+    implementation "com.scottyab:secure-preferences-lib:$version_secure_prefs"
+
     testImplementation 'junit:junit:4.12'
     androidTestImplementation 'androidx.test.ext:junit:1.1.1'
     androidTestImplementation 'androidx.test.espresso:espresso-core:3.2.0'
