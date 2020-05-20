@@ -19,4 +19,7 @@
     <string name="error_content_irregular_email">Bad email address.</string>
     <string name="view">View</string>
     <string name="error_content_undefined">Something went wrong:(</string>
+    <string name="title_search">Search</string>
+    <string name="film_name">Film name...</string>
+    <string name="clear_filters">Clear filters</string>
 </resources>

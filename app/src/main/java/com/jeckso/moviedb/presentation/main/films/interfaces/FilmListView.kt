@@ -13,4 +13,6 @@ interface FilmListView : BaseProgressiveView {
     fun onFilmsNotFound()
 
     fun navigateToFilm(filmVM: FilmVM)
+
+    fun showSearchDialog(genres: List<CharSequence>)
 }

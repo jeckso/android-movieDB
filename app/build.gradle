@@ -56,6 +56,8 @@ dependencies {
     implementation "androidx.constraintlayout:constraintlayout:$version_constraint_layout"
     implementation "com.google.android.material:material:$version_material"
     implementation "com.afollestad.material-dialogs:core:$version_dialogs"
+    implementation "com.afollestad.material-dialogs:bottomsheets:$version_dialogs"
+    implementation "com.afollestad.material-dialogs:input:$version_dialogs"
     implementation 'androidx.swiperefreshlayout:swiperefreshlayout:1.0.0'
 
     /*Media*/
