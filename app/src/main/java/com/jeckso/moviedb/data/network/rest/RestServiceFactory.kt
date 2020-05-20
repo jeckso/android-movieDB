@@ -1,12 +1,11 @@
 package com.jeckso.moviedb.data.network.rest
 
-import android.content.Context
 import com.google.gson.GsonBuilder
 import com.jakewharton.retrofit2.adapter.kotlin.coroutines.CoroutineCallAdapterFactory
 import com.jeckso.moviedb.BuildConfig
 import com.jeckso.moviedb.data.network.rest.auth.AuthInterceptor
 import com.jeckso.moviedb.data.network.rest.auth.AuthenticatorImpl
-import okhttp3.*
+import okhttp3.OkHttpClient
 import okhttp3.logging.HttpLoggingInterceptor
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory

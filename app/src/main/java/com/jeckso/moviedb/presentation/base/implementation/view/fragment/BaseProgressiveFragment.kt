@@ -3,7 +3,7 @@ package com.jeckso.moviedb.presentation.base.implementation.view.fragment
 import com.jeckso.moviedb.presentation.base.implementation.view.activity.BaseProgressiveActivity
 import com.jeckso.moviedb.presentation.base.interfaces.BaseProgressiveView
 
-class BaseProgressiveFragment : BaseFragment(), BaseProgressiveView {
+abstract class BaseProgressiveFragment : BaseFragment(), BaseProgressiveView {
 
     override fun showProgress() {
         (activity as? BaseProgressiveActivity)?.showProgress()
