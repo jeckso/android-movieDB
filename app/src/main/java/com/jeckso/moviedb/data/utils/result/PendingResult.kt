@@ -8,7 +8,7 @@ data class Success<T>(
     override val data: T
 ) : PendingResult<T>()
 
-data class Error(
+data class ErrorResult(
     val code: Int,
     val message: String
 ) : PendingResult<Nothing>() {

@@ -16,6 +16,7 @@ android {
         versionName "1.0"
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
         buildConfigField "String", "API_DOMAIN", "\"https://movie-db-dev.herokuapp.com\""
+        buildConfigField "String", "SECURE_NAME", rootProject.getLocalProperty('preferences_name')
         javaCompileOptions {
             annotationProcessorOptions {
                 arguments = [

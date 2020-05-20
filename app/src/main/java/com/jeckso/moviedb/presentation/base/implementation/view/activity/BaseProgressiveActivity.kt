@@ -9,6 +9,8 @@ abstract class BaseProgressiveActivity : BaseActivity(), BaseProgressiveView {
 
     private lateinit var contentLoadingProgressBar: ContentLoadingProgressBar
 
+    override val layoutResId: Int = R.layout.activity_with_progress
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         contentLoadingProgressBar = findViewById(R.id.layout_progress)

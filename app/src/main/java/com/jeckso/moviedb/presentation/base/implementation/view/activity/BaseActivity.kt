@@ -1,5 +1,6 @@
 package com.jeckso.moviedb.presentation.base.implementation.view.activity
 
+import android.os.Bundle
 import androidx.annotation.LayoutRes
 import com.afollestad.materialdialogs.MaterialDialog
 import com.jeckso.moviedb.R
@@ -12,6 +13,11 @@ abstract class BaseActivity : MvpAppCompatActivity(), BaseView {
     protected var currentFragment: BaseFragment? = null
 
     protected abstract val layoutResId: Int @LayoutRes get
+
+    override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
+        setContentView(layoutResId)
+    }
 
     override fun showMessage(title: String, message: String) {
         MaterialDialog(this).show {

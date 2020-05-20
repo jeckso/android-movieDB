@@ -67,6 +67,15 @@ ext {
     version_text_drawable = '1.0.1'
 }
 
+ext {
+    localProperties = new Properties()
+    file('local.properties').withInputStream { localProperties.load(it) }
+}
+ext.getLocalProperty = { value ->
+    return localProperties.getProperty(value)
+}
+
+
 task clean(type: Delete) {
     delete rootProject.buildDir
 }
