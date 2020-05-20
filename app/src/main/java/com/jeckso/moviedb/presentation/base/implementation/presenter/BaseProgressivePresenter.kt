@@ -30,12 +30,12 @@ abstract class BaseProgressivePresenter<T : BaseProgressiveView> : BasePresenter
     }
 
     fun <T> Flow<T>.execute(action: suspend (T) -> Unit): Job {
-        onStart { viewState.showProgress() }
-        flowOn(Dispatchers.Main)
-        onEach(action)
-        flowOn(Dispatchers.Main)
-        onCompletion { viewState.hideProgress() }
-        flowOn(Dispatchers.Main)
+        this.onStart { viewState.showProgress() }
+        this.flowOn(Dispatchers.Main)
+        this.onEach(action)
+        this.flowOn(Dispatchers.Main)
+        this.onCompletion { viewState.hideProgress() }
+        this.flowOn(Dispatchers.Main)
         return launchIn(this@BaseProgressivePresenter)
     }
 }

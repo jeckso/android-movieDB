@@ -17,4 +17,6 @@
     <string name="error">Error</string>
     <string name="error_content_password_confirmation">Password and its confirmation not matched!</string>
     <string name="error_content_irregular_email">Bad email address.</string>
+    <string name="view">View</string>
+    <string name="error_content_undefined">Something went wrong:(</string>
 </resources>
